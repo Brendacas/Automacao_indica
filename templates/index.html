@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Automação da Coleta de dados - INDICA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+<body>
+    <header>
+        <img id="logo-header" 
+         src="{{ url_for('static', filename='imagens/banner.png') }}" 
+         alt="BannerIndica">
+    </header>
+    <nav class="barra-azul">
+            <h2>Coleta de Dados</h2>
+    </nav>
+    <main class="container-principal">
+        <button class="botao-expansivel">Subíndice de Abertura Externa</button>
+
+        <div class="conteudo">
+            <p>Escolha os filtros:</p>
+
+            <form id="form-sae" action="/processar-sae" method="POST">
+                
+                <div class="form-horizontal">
+        
+                    <div>
+                        <label for="ano_input">Ano:</label>
+                        <input type="number" id="ano_input" name="ano" placeholder="Ex: 2024" min="2000" max="2099">
+                    </div>
+                    
+                    <div>
+                        <label for="mes_input">Mês:</label>
+                        <input type="number" id="mes_input" name="mes" placeholder="Ex: 11" min="1" max="12">
+                    </div>
+
+                   <div>
+                        <label for="uf_input">UF:</label>
+                        <select id="uf_input" name="uf" required>
+                            <option value="">Selecione um estado...</option>
+                            <option value="AC">Acre</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="AP">Amapá</option>
+                            <option value="AM">Amazonas</option>
+                            <option value="BA">Bahia</option>
+                            <option value="CE">Ceará</option>
+                            <option value="DF">Distrito Federal</option>
+                            <option value="ES">Espírito Santo</option>
+                            <option value="GO">Goiás</option>
+                            <option value="MA">Maranhão</option>
+                            <option value="MT">Mato Grosso</option>
+                            <option value="MS">Mato Grosso do Sul</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="PA">Pará</option>
+                            <option value="PB">Paraíba</option>
+                            <option value="PR">Paraná</option>
+                            <option value="PE">Pernambuco</option>
+                            <option value="PI">Piauí</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="RN">Rio Grande do Norte</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="RO">Rondônia</option>
+                            <option value="RR">Roraima</option>
+                            <option value="SC">Santa Catarina</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="SE">Sergipe</option>
+                            <option value="TO">Tocantins</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="tipo_input">Opção:</label>
+                        <select id="tipo_input" name="tipo">
+                            <option value="EXP">Exportação</option>
+                            <option value="IMP">Importação</option>
+                        </select>
+                    </div>
+
+                </div> <div class="container-button">
+                    <button class="Download" type="submit">Fazer Download</button>
+                </div>
+
+            </form> </div> 
+
+        <button class="botao-expansivel">Subíndice de Arrecadação Fiscal</button>
+        <div class="conteudo">
+            <p>Escolha os filtros. </p>
+            
+            <form id="form-saf" action="/processar-saf" method="POST">
+                
+                <div class="form-horizontal">
+                    <div>
+                        <label for="saf_ano_input">Ano:</label>
+                        <input type="number" id="saf_ano_input" name="ano" placeholder="Ex: 2024" min="2000" max="2099" required>
+                    </div>
+                    
+                    <div>
+                        <label for="saf_mes_input">Mês:</label>
+                        <input type="number" id="saf_mes_input" name="mes" placeholder="Ex: 11" min="1" max="12" required>
+                    </div>
+                </div> 
+
+                <div class="container-button">
+                    <button class="Download" type="submit">Fazer Download</button>
+                </div>
+            </form>
+        </div>
+
+        <button class="botao-expansivel">Subíndice de Atividade Bancária</button>
+
+        <div class="conteudo">
+        <p>Escolha os filtros:</p>
+
+            <form id="form-sab" action="/processar-sab" method="POST">
+                
+                <div class="form-horizontal">
+            
+                    <div>
+                        <label for="sab_ano_input">Ano:</label>
+                        <input type="number" id="sab_ano_input" name="ano" placeholder="Ex: 2024" min="2000" max="2099" required>
+                    </div>
+                    
+                    <div>
+                        <label for="sab_mes_input">Mês:</label>
+                        <input type="number" id="sab_mes_input" name="mes" placeholder="Ex: 11" min="1" max="12">
+                    </div>
+
+                </div> 
+                <div class="container-button">
+                    <button class="Download" type="submit">Fazer Download</button>
+                </div>
+
+            </form>
+        </div>
+
+        <button class="botao-expansivel">Subíndice de Mercado de Trabalho</button>
+
+        <div class="conteudo">
+        <p>Escolha os filtros.</p>
+            
+            <form id="form-smt" action="/processar-smt" method="POST">
+                
+                <div class="form-horizontal">
+
+                    <div>
+                        <label for="smt_ano_input">Ano:</label>
+                        <input type="number" id="smt_ano_input" name="ano" placeholder="Ex: 2024" min="2020" max="2099" required>
+                    </div>
+                    
+                    <div>
+                        <label for="smt_mes_input">Mês:</label>
+                        <input type="number" id="smt_mes_input" name="mes" placeholder="Ex: 11" min="1" max="12" required>
+                    </div>
+                    <div>
+                        <label for="smt_uf_input">UF:</label>
+                        <select id="smt_uf_input" name="uf" required>
+                            <option value="">Selecione um estado...</option>
+                            <option value="AC">Acre</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="AP">Amapá</option>
+                            <option value="AM">Amazonas</option>
+                            <option value="BA">Bahia</option>
+                            <option value="CE">Ceará</option>
+                            <option value="DF">Distrito Federal</option>
+                            <option value="ES">Espírito Santo</option>
+                            <option value="GO">Goiás</option>
+                            <option value="MA">Maranhão</option>
+                            <option value="MT">Mato Grosso</option>
+                            <option value="MS">Mato Grosso do Sul</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="PA">Pará</option>
+                            <option value="PB">Paraíba</option>
+                            <option value="PR">Paraná</option>
+                            <option value="PE">Pernambuco</option>
+                            <option value="PI">Piauí</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="RN">Rio Grande do Norte</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="RO">Rondônia</option>
+                            <option value="RR">Roraima</option>
+                            <option value="SC">Santa Catarina</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="SE">Sergipe</option>
+                            <option value="TO">Tocantins</option>
+                        </select>
+                    </div>
+
+                </div>
+                 <p>Este download é lento e pode levar alguns minutos.</p>
+
+                <div class="container-button">
+                    <button class="Download" type="submit">Fazer Download</button>
+                </div>
+
+            </form>
+        </div>
+    </main>
+
+    <div id="loading-spinner" class="spinner-overlay" style="display: none;">
+        <div class="spinner"></div>
+        <p>Processando e baixando dados... Por favor, aguarde.</p>
+    </div>
+
+    <footer>
+        <p>© 2025. Todos os direitos reservados. Desenvolvido por Brenda Castro da Silva.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>

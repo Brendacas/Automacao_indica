@@ -1,0 +1,145 @@
+body, header, h2 {
+    margin: 0;  /* Zera a margem de tudo */
+    padding: 0; /* Zera o preenchimento de tudo */
+}
+body {
+    font-family: Arial, sans-serif;
+    width: 80%;
+    margin: 0 auto;
+    background-color: #fff;
+}
+#logo-header {
+    width: 100%;  
+    height: auto;  
+    display: block;
+}
+.barra-azul {
+    background-color: #12239E;  /* Tom de azul (padrão do site */
+    padding: 10px 0;            /* Espaçamento (10px em cima/baixo, 0 nos lados) */
+    text-align: center;         /* Centraliza o conteúdo (o <h2>) */
+}
+/* Estilo para o texto dentro da barra */
+.barra-azul h2 {
+    color: white;   /* Cor da fonte */
+    margin: 0;      /* Remove a margem padrão do h2 */
+    font-size: 24px; /* Define um tamanho para o título */
+}
+/* O botão dos subíndices */
+.botao-expansivel {
+    background-color: #2772aa;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+/* Um efeito simples ao passar o mouse */
+.botao-expansivel:hover {
+    background-color: #264d82;
+}
+/* Estilo para o seu botão de download */
+.Download {
+    background-color: #12239E; 
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.Download:hover {
+    background-color: #287eb5; 
+}
+.container-button{
+    padding: 18px;
+    text-align: right; /* Alinha todo o texto (e elementos inline) à direita */
+    margin-top: 15px;  /* Adiciona um espaço de cima */
+}
+
+/* O painel com as opções, escondido por padrão */
+.conteudo {
+    padding: 0 18px;
+    display: none; /* ESCONDIDO POR PADRÃO */
+    overflow: hidden;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+}
+.form-horizontal {
+    display: flex;       /*  alinha os filhos lado a lado */
+    flex-wrap: wrap;     /* Permite quebrar a linha em telas pequenas */
+    gap: 15px;           /* Um espaço entre os campos */
+}
+.container-principal {
+    margin-top: 0;
+    border: 3px solid #12239E; 
+    padding: 20px; 
+    border-radius: 8px;  /*Cantos arredondados
+
+    /* Centraliza o bloco na página */
+    width: 95%;          /* Ocupa 95% da largura */
+    max-width: 1080px;   /* Um limite máximo em telas grandes */
+    margin: 10px auto;   /* 20px de espaço (do header) e 'auto' para centralizar */
+    background-color: #fff;
+        
+    /* Sombra suave  */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.container-principal .botao-expansivel:first-child {
+    margin-top: 0;
+}
+
+footer {
+    background-color: #12239E; 
+    color: white;              /* Texto em branco */
+    text-align: center;        /* Texto centralizado */
+    padding: 10px 0;           /* Espaçamento interno (10px em cima/baixo) */
+    margin-top: 20px;          /* Um espaço para separá-lo do conteúdo principal */
+}
+/* Ajusta o texto dentro do rodapé */
+footer p {
+    margin: 5px 0;       /* Remove margens padrão e adiciona um pequeno espaço entre as linhas */
+    font-size: 14px;    /* Deixa a fonte um pouco menor */
+}
+.spinner-overlay {
+    position: fixed; /* Fica por cima de tudo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo preto semi-transparente */
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* O círculo giratório */
+.spinner {
+    border: 8px solid #f3f3f3; /* Cinza claro */
+    border-top: 8px solid #004a91; 
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1.5s linear infinite;
+}
+/* O texto abaixo do spinner */
+.spinner-overlay p {
+    color: white;
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+/* A animação de rotação */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+        

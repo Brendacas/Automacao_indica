@@ -1,0 +1,14 @@
+# Ambiente Virtual
+venv/
+
+# Pastas temporárias do Python
+__pycache__/
+*.pyc
+
+# Arquivos de Sistema
+.DS_Store
+
+# Pastas de download 
+download/
+downloads/
+temp_downloads/

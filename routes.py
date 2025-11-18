@@ -5,8 +5,8 @@ from flask import (
 )
 from scripts.SAE import processar_sae
 from scripts.SAB import processar_sab
-#from scripts.SMT import processar_smt
-#from scripts.SAF import processar_saf
+from scripts.SMT import processar_smt
+from scripts.SAF import processar_saf
 
 from app_init import app  
 
@@ -55,41 +55,41 @@ def processar_download():
 
     return redirect(url_for('index'))
 
-# @app.route('/processar-saf', methods=['POST'])
-# def processar_saf_route():
+@app.route('/processar-saf', methods=['POST'])
+def processar_saf_route():
     
-#     if request.method == 'POST':
-#         ano = request.form.get('ano')
-#         mes = request.form.get('mes')
+    if request.method == 'POST':
+        ano = request.form.get('ano')
+        mes = request.form.get('mes')
 
-#         print("--- ROTA /processar-saf CHAMADA ---")
-#         print(f"Formulário: Ano={ano}, Mês={mes}")
+        print("--- ROTA /processar-saf CHAMADA ---")
+        print(f"Formulário: Ano={ano}, Mês={mes}")
 
-#         try:
-#             buffer, nome_arquivo = processar_saf(
-#                 ano_full=ano,
-#                 mes_num=mes
-#             )
+        try:
+            buffer, nome_arquivo = processar_saf(
+                ano_full=ano,
+                mes_num=mes
+            )
             
-#             if buffer is not None:
-#                 print(f"Sucesso. Enviando arquivo: {nome_arquivo}")
-#                 response = send_file(
-#                     buffer,
-#                     mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-#                     as_attachment=True,
-#                     download_name=nome_arquivo
-#                 )
-#                 response.headers['Access-Control-Expose-Headers'] = 'Content-Disposition'
-#                 return response
-#             else:
-#                 print("Falha no script SAF (buffer is None).")
-#                 return "Erro: Não foi possível gerar o arquivo. Verifique os filtros, os logs e se o Java está instalado.", 500
+            if buffer is not None:
+                print(f"Sucesso. Enviando arquivo: {nome_arquivo}")
+                response = send_file(
+                    buffer,
+                    mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                    as_attachment=True,
+                    download_name=nome_arquivo
+                )
+                response.headers['Access-Control-Expose-Headers'] = 'Content-Disposition'
+                return response
+            else:
+                print("Falha no script SAF (buffer is None).")
+                return "Erro: Não foi possível gerar o arquivo. Verifique os filtros, os logs e se o Java está instalado.", 500
                 
-#         except Exception as e:
-#             print(f"Erro catastrófico na rota SAF: {e}")
-#             return "Erro interno do servidor.", 500
+        except Exception as e:
+            print(f"Erro catastrófico na rota SAF: {e}")
+            return "Erro interno do servidor.", 500
 
-#     return redirect(url_for('index'))
+    return redirect(url_for('index'))
 
 @app.route('/processar-sab', methods=['POST'])
 def processar_sab_route():
@@ -133,41 +133,41 @@ def processar_sab_route():
 
     return redirect(url_for('index'))
 
-# @app.route('/processar-smt', methods=['POST'])
-# def processar_smt_route():
+@app.route('/processar-smt', methods=['POST'])
+def processar_smt_route():
     
-#     if request.method == 'POST':
-#         uf = request.form.get('uf')
-#         ano = request.form.get('ano')
-#         mes = request.form.get('mes')
+    if request.method == 'POST':
+        uf = request.form.get('uf')
+        ano = request.form.get('ano')
+        mes = request.form.get('mes')
 
-#         print("--- ROTA /processar-smt CHAMADA ---")
-#         print(f"Formulário: UF={uf}, Ano={ano}, Mês={mes}")
+        print("--- ROTA /processar-smt CHAMADA ---")
+        print(f"Formulário: UF={uf}, Ano={ano}, Mês={mes}")
 
-#         try:
-#             #Chama o script SMT 
-#             buffer, nome_arquivo = processar_smt(
-#                 uf=uf,
-#                 ano=ano,
-#                 mes_num=mes
-#             )
+        try:
+            #Chama o script SMT 
+            buffer, nome_arquivo = processar_smt(
+                uf=uf,
+                ano=ano,
+                mes_num=mes
+            )
             
-#             if buffer is not None:
-#                 print(f"Sucesso. Enviando arquivo: {nome_arquivo}")
-#                 response = send_file(
-#                     buffer,
-#                     mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-#                     as_attachment=True,
-#                     download_name=nome_arquivo
-#                 )
-#                 response.headers['Access-Control-Expose-Headers'] = 'Content-Disposition'
-#                 return response
-#             else:
-#                 print("Falha no script SMT (buffer is None).")
-#                 return "Erro: Não foi possível gerar o arquivo. Verifique os filtros ou os logs.", 500
+            if buffer is not None:
+                print(f"Sucesso. Enviando arquivo: {nome_arquivo}")
+                response = send_file(
+                    buffer,
+                    mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                    as_attachment=True,
+                    download_name=nome_arquivo
+                )
+                response.headers['Access-Control-Expose-Headers'] = 'Content-Disposition'
+                return response
+            else:
+                print("Falha no script SMT (buffer is None).")
+                return "Erro: Não foi possível gerar o arquivo. Verifique os filtros ou os logs.", 500
                 
-#         except Exception as e:
-#             print(f"Erro catastrófico na rota SMT: {e}")
-#             return "Erro interno do servidor.", 500
+        except Exception as e:
+            print(f"Erro catastrófico na rota SMT: {e}")
+            return "Erro interno do servidor.", 500
 
-#     return redirect(url_for('index'))
+    return redirect(url_for('index'))

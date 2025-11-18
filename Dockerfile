@@ -3,13 +3,13 @@ FROM python:3.11-slim
 # Define a pasta de trabalho dentro do contêiner
 WORKDIR /app
 
+# Vamos instalar uma versão específica e leve do Java (OpenJDK 17)
 RUN apt-get update && \
     apt-get install -y openjdk-17-jdk-headless && \
     rm -rf /var/lib/apt/lists/*
 
 # Define o JAVA_HOME para o caminho específico do OpenJDK 17
 ENV JAVA_HOME /usr/lib/jvm/java-17-openjdk-amd64
-
 # --- 2. Instalar Bibliotecas Python ---
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt

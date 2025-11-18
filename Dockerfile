@@ -1,4 +1,3 @@
-# Usa uma imagem oficial do Python como base
 FROM python:3.11-slim
 
 # Define a pasta de trabalho dentro do contêiner

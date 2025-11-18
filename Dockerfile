@@ -1,27 +1,20 @@
 FROM python:3.11-slim
 
-# Define a pasta de trabalho dentro do contêiner
 WORKDIR /app
 
-# Vamos instalar uma versão específica e leve do Java (OpenJDK 17)
+JAVA
 RUN apt-get update && \
-    apt-get install -y openjdk-17-jdk-headless && \
+    apt-get install -y openjdk-17-jdk-headless wget gnupg libnss3 libxkbcommon0 libgtk-3-0 libdrm2 libgbm1 && \
     rm -rf /var/lib/apt/lists/*
 
-# Define o JAVA_HOME para o caminho específico do OpenJDK 17
-ENV JAVA_HOME /usr/lib/jvm/java-17-openjdk-amd64
-# --- 2. Instalar Bibliotecas Python ---
+ENV JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
+ENV PATH="$JAVA_HOME/bin:$PATH"
+
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-
-# Instala as dependências de sistema APENAS para o chromium
-RUN playwright install-deps chromium
-# Instala APENAS o navegador chromium
+RUN pip install playwright
 RUN playwright install chromium
 
-# --- 4. Copiar o Resto do seu Código ---
 COPY . .
 
-# --- 5. Comando para Rodar (O Render usa a porta 10000) ---
-# Diz ao Gunicorn para escutar na porta 10000
 CMD ["gunicorn", "--bind", "0.0.0.0:10000", "run:app"]

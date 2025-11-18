@@ -7,14 +7,16 @@ WORKDIR /app
 # --- 1. Instalar o Java (JDK) ---
 # Necessário para o 'tabula-py' (Script SAF)
 RUN apt-get update && apt-get install -y default-jdk && rm -rf /var/lib/apt/lists/*
+ENV JAVA_HOME /usr/lib/jvm/default-java
 
 # --- 2. Instalar Bibliotecas Python ---
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# --- 3. Instalar o Playwright (Navegadores e Dependências) ---
-RUN playwright install-deps
-RUN playwright install
+# Instala as dependências de sistema APENAS para o chromium
+RUN playwright install-deps chromium
+# Instala APENAS o navegador chromium
+RUN playwright install chromium
 
 # --- 4. Copiar o Resto do seu Código ---
 COPY . .

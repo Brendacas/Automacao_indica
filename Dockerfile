@@ -4,13 +4,11 @@ FROM python:3.11-slim
 WORKDIR /app
 
 RUN apt-get update && \
-    apt-get install -y default-jdk && \
-    rm -rf /var/lib/apt/lists/* && \
-    # VVV ESTA É A NOVA LINHA DE CORREÇÃO VVV
-    ln -s /usr/lib/jvm/default-java/lib/server/libjvm.so /usr/lib/libjvm.so
+    apt-get install -y openjdk-17-jdk-headless && \
+    rm -rf /var/lib/apt/lists/*
 
-# Define a variável de ambiente JAVA_HOME 
-ENV JAVA_HOME /usr/lib/jvm/default-java
+# Define o JAVA_HOME para o caminho específico do OpenJDK 17
+ENV JAVA_HOME /usr/lib/jvm/java-17-openjdk-amd64
 
 # --- 2. Instalar Bibliotecas Python ---
 COPY requirements.txt .

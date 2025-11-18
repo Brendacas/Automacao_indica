@@ -3,11 +3,14 @@ FROM python:3.11-slim
 # Define a pasta de trabalho dentro do contêiner
 WORKDIR /app
 
-# --- 1. Instalar o Java (JDK) ---
-# Necessário para o 'tabula-py' (Script SAF)
-RUN apt-get update && apt-get install -y default-jdk && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+    apt-get install -y default-jdk && \
+    rm -rf /var/lib/apt/lists/* && \
+    # VVV ESTA É A NOVA LINHA DE CORREÇÃO VVV
+    ln -s /usr/lib/jvm/default-java/lib/server/libjvm.so /usr/lib/libjvm.so
+
+# Define a variável de ambiente JAVA_HOME 
 ENV JAVA_HOME /usr/lib/jvm/default-java
-ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:$JAVA_HOME/lib/server
 
 # --- 2. Instalar Bibliotecas Python ---
 COPY requirements.txt .

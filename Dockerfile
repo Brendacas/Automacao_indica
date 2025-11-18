@@ -2,7 +2,7 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-JAVA
+#JAVA
 RUN apt-get update && \
     apt-get install -y openjdk-17-jdk-headless wget gnupg libnss3 libxkbcommon0 libgtk-3-0 libdrm2 libgbm1 && \
     rm -rf /var/lib/apt/lists/*
@@ -10,6 +10,7 @@ RUN apt-get update && \
 ENV JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
 ENV PATH="$JAVA_HOME/bin:$PATH"
 
+#PLAYWRIGHT
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install playwright

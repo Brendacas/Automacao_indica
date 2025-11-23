@@ -40,9 +40,9 @@ def SMT_download():
                 arquivo_locator.hover()
                 page.wait_for_timeout(2000)
                 
-                with page.expect_download(timeout=60000) as download_info:
+                with page.expect_download(timeout=80000) as download_info:
                     botao_baixar = page.get_by_role("button", name="Baixar", exact=True)
-                    botao_baixar.wait_for(state="visible", timeout=50000)
+                    botao_baixar.wait_for(state="visible", timeout=70000)
                     botao_baixar.click()
                 
                 download = download_info.value

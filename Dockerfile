@@ -23,4 +23,4 @@ RUN playwright install chromium
 
 COPY . .
 
-CMD ["gunicorn", "-b", "0.0.0.0:10000", "run:app"]
+CMD gunicorn run:app --bind 0.0.0.0:$PORT
